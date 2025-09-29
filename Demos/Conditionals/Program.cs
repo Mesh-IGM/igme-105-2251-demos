@@ -1,4 +1,6 @@
-﻿namespace Conditionals
+﻿using System.Reflection.Emit;
+
+namespace Conditionals
 {
     internal class Program
     {
@@ -120,6 +122,7 @@
 
             if (num > 8)
             {
+                double otherNum = 12.5;
                 Console.WriteLine("med");
             }
             else
@@ -129,13 +132,46 @@
 
             if (name.Length > 0)
             {
+                int otherNum = 9;
                 // Only check this if first name is "Shiro"
                 if (name == "Shiro")
                 {
-                    Console.WriteLine("I know that cat!");
+                    Console.WriteLine("I know that cat!"+otherNum);
                 }
+                Console.WriteLine(otherNum);
             }
 
+            int level = 4;
+            string weapon = "Sword";
+            if (level > 10 && 
+                weapon == "Sword"
+                )
+            { }
+
+            bool isTrained = false;
+            int strength = 12;
+            if (
+                (level > 10 &&
+                weapon == "Sword")
+                || // OR
+                (isTrained &&
+                strength > 45)
+                )
+            { }
+
+
+
+                string sense = "flowers";
+            if (sense == "flowers"
+                || sense == "flower"
+                || sense == "a flower"
+                )
+            { }
+
+            if (sense.Contains("flower"))
+            {
+                
+            }
 
         }
     }
