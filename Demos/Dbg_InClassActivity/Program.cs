@@ -31,7 +31,7 @@ namespace Dbg_InClassActivity
             // TODO: Uncomment the method calls one at a time and debug them
             //FractionToDecimal();
             //Quadratic();
-            //CipherText(); 
+            CipherText(); 
             //Console.WriteLine(Fibonaci(10)); // The result should be 55 (0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55)
         }
 
@@ -134,25 +134,53 @@ namespace Dbg_InClassActivity
         private static void CipherText()
         {
             // Setup
-            const char MinSourceLetter = 'A';
+            const char MinSourceLetter = 'a';
             const char MinCipherLetter = 'A';
             const int NumLetters = 26;
 
             // Variables we'll need
             string text;
-            string ciphertext;
+            string ciphertext = "";
             int shiftKey = 0;
 
             // Get the cipher info
             shiftKey = int.Parse(PromptForInput("Enter the shift key [0, 26]:"));
 
             // Get the word to encrypt
-            text = PromptForInput("Enter the word to encrypt:").ToUpper();
+            text = PromptForInput("Enter the word to encrypt:");
 
+
+            // for every letter in the source string
+            for (int i = 0; i < text.Length; i++)
+            {
+                char newLetter = 
+                    (char)((
+                        (text[i] - MinSourceLetter) // b - a --> 1
+                        + shiftKey
+                    ) % NumLetters // restrict to 26 letters
+                    + MinCipherLetter);
+                ciphertext += newLetter;
+            }
+
+
+            /*
             // Encrypt & print
             ciphertext = text;
-            ciphertext = ciphertext.Replace((char)(MinSourceLetter + 0), (char)((0 + shiftKey) % NumLetters + MinCipherLetter));
+
+            // A --> b
+            ciphertext = ciphertext.Replace(
+                (char)(MinSourceLetter + 0), // A -- 65
+                (char)(
+                        (0 + shiftKey) % NumLetters // (0+1) % 26 --> 1
+                        + MinCipherLetter // a --- 65
+                    ) // 66 --> B
+                );
+
+
+            // B --> c
             ciphertext = ciphertext.Replace((char)(MinSourceLetter + 1), (char)((1 + shiftKey) % NumLetters + MinCipherLetter));
+
+            // C --> D
             ciphertext = ciphertext.Replace((char)(MinSourceLetter + 2), (char)((2 + shiftKey) % NumLetters + MinCipherLetter));
             ciphertext = ciphertext.Replace((char)(MinSourceLetter + 3), (char)((3 + shiftKey) % NumLetters + MinCipherLetter));
             ciphertext = ciphertext.Replace((char)(MinSourceLetter + 4), (char)((4 + shiftKey) % NumLetters + MinCipherLetter));
@@ -177,6 +205,7 @@ namespace Dbg_InClassActivity
             ciphertext = ciphertext.Replace((char)(MinSourceLetter + 23), (char)((23 + shiftKey) % NumLetters + MinCipherLetter));
             ciphertext = ciphertext.Replace((char)(MinSourceLetter + 24), (char)((24 + shiftKey) % NumLetters + MinCipherLetter));
             ciphertext = ciphertext.Replace((char)(MinSourceLetter + 25), (char)((25 + shiftKey) % NumLetters + MinCipherLetter));
+            */
 
             Console.WriteLine("\n ---> " + ciphertext);
         }
