@@ -12,33 +12,44 @@ namespace DefiningClasses
         private double biteLikelihood;
         private bool isQueen;
         private int currentLoad;
+        private double size;
         private const int WeightMax = 100;
 
         // Properties -- coming soon
 
         // Default Constructor
-        /*
         public Ant()
+            : this("Worker", "black", false)
         {
+            Console.WriteLine("default");
+            /*
             color = "black";
             name = "Worker";
             limbCount = 6;
             biteStr = 1.0;
             biteLikelihood = 0.0;
+            size = 0.005;
             isQueen = false;
+            */
         }
-        */
 
         // Param Constructor
-        public Ant(/*string nameParam,*/ string name, string color)
+        public Ant(/*string nameParam,*/ string name, string color, bool isQueen)
         {
+            Console.WriteLine("params");
             //name = nameParam;
             this.name = name;
             this.color = color;
+            this.isQueen = isQueen;
+            size = 0.005;
             limbCount = 6;
             biteStr = 1.0;
             biteLikelihood = 0.0;
-            isQueen = false;
+
+            if(isQueen)
+            {
+                size *= 4;
+            }
         }
 
         // Methods
