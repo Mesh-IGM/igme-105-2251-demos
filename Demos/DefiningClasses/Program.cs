@@ -11,9 +11,21 @@
 
             for(int i = 0; i < 10; i++)
             {
-                shiro.GetFood(rng.Next(5,20));
-                lacy.GetFood(rng.Next(5, 20));
+                shiro.StoreFood(rng.Next(5,20));
+                lacy.StoreFood(rng.Next(5, 20));
             }
+
+            Console.WriteLine(lacy.CurrentLoad);
+            // lacy.CurrentLoad = 3;
+
+            lacy.BiteLikelihood = 0.67;
+            lacy.BiteLikelihood += 0.02;
+
+            // lacy.SetXXX(lacy.GetXXX + 0.02));
+
+            lacy.BiteLikelihood++;
+
+            Console.WriteLine(lacy.Age);
 
         }
 

@@ -14,8 +14,39 @@ namespace DefiningClasses
         private int currentLoad;
         private double size;
         private const int WeightMax = 100;
+        private DateTime birthday;
 
-        // Properties -- coming soon
+        // Properties
+        public int CurrentLoad
+        {
+            get
+            {
+                return currentLoad;
+            }
+        }
+
+        public double BiteLikelihood
+        {
+            get { return biteLikelihood; }
+            set
+            { 
+                biteLikelihood = value;
+            }
+        }
+
+        // The Age property calculates how old the pet is TODAY
+        // There is NO corresponding age field b/c it’s a calc
+        // based on the birthday
+        public double Age
+        {
+            get
+            {
+                // Calculate age in days, return in years
+                double ageDays =
+                        (DateTime.Today - this.birthday).TotalDays;
+                return Math.Round(ageDays / 365, 2);
+            }
+        }
 
         // Default Constructor
         public Ant()
@@ -37,6 +68,8 @@ namespace DefiningClasses
         public Ant(/*string nameParam,*/ string name, string color, bool isQueen)
         {
             Console.WriteLine("params");
+            birthday = new DateTime(1970, 1, 1);
+
             //name = nameParam;
             this.name = name;
             this.color = color;
@@ -54,7 +87,12 @@ namespace DefiningClasses
 
         // Methods
 
-        public void GetFood(int amount)
+        public int GetLoad()
+        {
+            return currentLoad;
+        }
+
+        public void StoreFood(int amount)
         {
             currentLoad += amount;
             currentLoad = Math.Min(currentLoad, WeightMax);
