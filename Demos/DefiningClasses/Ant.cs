@@ -100,5 +100,10 @@ namespace DefiningClasses
         }
 
 
+        public override string ToString()
+        {
+            return name;
+        }
+
     }
 }
