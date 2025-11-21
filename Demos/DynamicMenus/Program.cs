@@ -4,6 +4,11 @@
     {
         static void Main(string[] args)
         {
+            //Shape s = new Shape();
+            Shape circ = new Circle();
+            circ.CalculateArea();
+            //Circle tmp = circ;
+
             // ~~~ Variables we'll need + their initializations ~~
             // Create some menu items. Yes, ideally, these would all be in an array so we could loop
             // over them later, but they are all different types. We'll discuss how to make that
